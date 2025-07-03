@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🧾 GST Invoice Generator</h1>
+
+    <div class="grid">
+      <div class="left">
+        <form id="invoice-form">
+          <input type="text" id="invoiceId" placeholder="Invoice No. (auto)" disabled>
+          <input type="text" id="businessName" placeholder="Your Business Name" required>
+          <input type="text" id="sellerGST" placeholder="Your GSTIN (optional)">
+          <input type="text" id="customerName" placeholder="Customer Name" required>
+          <input type="text" id="buyerGST" placeholder="Customer GSTIN (optional)">
+          <input type="date" id="invoiceDate" required>
+
+          <div id="items-section">
+            <h3>Items</h3>
+            <div class="item-row">
+              <input type="text" class="item-name" placeholder="Item Name" required>
+              <input type="number" class="item-qty" placeholder="Qty" required>
+              <input type="number" class="item-price" placeholder="Price" required>
+              <input type="number" class="item-gst" placeholder="GST (%)" required>
+            </div>
+          </div>
+          <button type="button" onclick="addItem()">+ Add Item</button>
+
+          <div class="totals">
+            <p id="subtotal">Subtotal: ₹0</p>
+            <p id="gstAmount">GST: ₹0</p>
+            <h3 id="grandTotal">Total: ₹0</h3>
+          </div>
+
+          <button type="button" onclick="generateInvoice()">Generate Invoice</button>
+<button type="button" onclick="downloadInvoice()">📥 Download Invoice PDF</button>
+<button type="button" onclick="clearDraft()">🗑 Clear Draft</button>
+
+        </form>
+      </div>
+
+      <div class="right">
+        <h3>Invoice Preview</h3>
+        <div id="invoice-output" class="invoice-preview"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
